@@ -91,7 +91,11 @@ $bounce_mailbox_port = "110/pop3/notls";
 
 # when the protocol is mbox specify this one
 # it needs to be a local file in mbox format, accessible to your webserver user
-$bounce_mailbox = '/var/mail/listbounces';
+# as a relative path (imap php library restriction). 
+# In the example below the listbounces file has been placed in the webserver's root
+# dir (eg. /var/www/) with appropriate read/write access (at least 0600)
+# Warning : make sure to have a .htaccess that restricts public access to this file
+$bounce_mailbox = 'listbounces';
 
 # set this to 0 if you want to keep your messages in the mailbox. this is potentially
 # a problem, because bounces will be counted multiple times, so only do this if you are
